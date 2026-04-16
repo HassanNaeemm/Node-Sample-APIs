@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken')
 
 
 
-var client = new MongoClient('mongodb://localhost:27017');
+var client = new MongoClient(process.env.MONGO_URI);
 var app = express()
 
 app.use(express.json())
