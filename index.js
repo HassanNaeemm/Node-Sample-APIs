@@ -7,8 +7,9 @@ var jwt = require('jsonwebtoken')
 var client = new MongoClient(process.env.MONGO_URI);
 var app = express()
 
-app.use(express.json())
 
+app.use(express.json())
+    client.connect();
 //Get Api
 app.get('/fetch',async(req,res)=>{
     try{
@@ -22,7 +23,7 @@ app.get('/fetch',async(req,res)=>{
 var apikey = '123';
 //POST API
 app.post('/add',async(req,res)=>{
-    client.connect();
+
     var resapikey = req.query.apikey
     if(resapikey !== apikey){
        console.log("Apiu key mis matched")
